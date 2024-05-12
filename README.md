@@ -35,5 +35,6 @@ Implemented phone and Gmail authentication using Django’s authentication syste
 ### Artists Song Modification
 ![artists_song_modify](https://github.com/preetdhamu/BitBuzz/assets/108987388/820ec422-d4a8-4639-b23b-8ef7837ec827)
 ### Astists Song Deletion
-![artist_song_del](https://github.com/preetdhamu/BitBuzz/assets/108987388/237ec3fa-b793-4729-a8f0-127e1ff946e2)
+### ![artist_song_del](https://github.com/preetdhamu/BitBuzz/assets/108987388/237ec3fa-b793-4729-a8f0-127e1ff946e2)
+
 
