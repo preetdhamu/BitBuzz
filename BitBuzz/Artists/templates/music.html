@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="conatiner col-xs-2  rounded p-5 m-5"  style="justify-content:center;display: flex;">
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div>
+    <label for="songname" class="form-label text " style="color: #f2f619; float: left;">Song Name</label>
+    <input type="text" class="form-control " id="songname" name="songname" required style="background-color: #282d39 !important; ">
+  </div>
+  <br><br>
+  <div >
+      <label for="singername" class="form-label text" style="color: #f2f619; float: left;">Singer Name</label>
+      <input type="text" class="form-control " id="singername" name="singername" required style="background-color: #282d39 !important; ">
+  </div>
+  <br><br>
+  <div >
+      <label for="tags" class="form-label text " style="color: #f2f619; float: left;">Tags</label>
+      <input type="text" class="form-control " id="tags" name="tags" required style="background-color: #282d39 !important; ">
+  </div>
+  <div >
+      <input type="hidden"  name="singeremail" value="{{ request.user.email }}">
+  </div>
+  <br><br>
+  <div >
+    <label for="cover" class="form-label text " style="color: #f2f619; float: left;" onchange="validateImageSize(event)">Cover</label>
+    <input type="file" class="form-control " id="cover" name="cover" required style="background-color: #282d39 !important; ">
+</div>
+<br><br>
+<div >
+  <label for="songfile" class="form-label text " style="color: #f2f619; float: left;">Song </label>
+  <input type="file" class="form-control" id="songfile" name="songfile" required style="background-color: #282d39 !important; ">
+</div>
+<br><br>
+<div class=" d-grid gap-2">
+  <button type="submit" class="btn" style="color: #f2f619;">Upload Song</button>
+</div>
+</form>
+</div>
+
+<script>
+              function validateImageSize(event) {
+                      var file = event.target.files[0];
+                      var img = new Image();
+
+              img.onload = function() {
+                   if (img.width === 250 && img.height === 250) {
+          
+                  } else 
+                  {
+                      event.target.value = "";
+                      alert("Please select an image with dimensions 250x250 pixels.");
+                  }
+               };
+
+        img.src = URL.createObjectURL(file);
+      }
+
+</script>
+
+{% endblock %}

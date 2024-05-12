@@ -1,0 +1,327 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>BitBuzz-Web Player</title>
+
+    <link rel="stylesheet" href="{% static 'homelistener.css'%}">
+    <link rel="stylesheet" href="{% static 'models.css'%}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .btn1 {
+            position: relative;
+            width: 200px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+
+            color: #808080;
+            text-decoration: none;
+            letter-spacing: 2px;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.35);
+            border-left: 0.5px solid rgba(255, 255, 255, 0.35);
+            padding-left: 62px;
+            transition: 0.5s;
+            overflow: hidden;
+        }
+
+        .btn1:hover {
+            padding-left: 5px;
+            padding-right: 40px;
+            color: rgba(255, 255, 255, 1)
+        }
+
+        .btn1 span {
+            position: absolute;
+            left: 5px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(to top left, whitesmoke, royalblue);
+            border-radius: 50%;
+            transition: 0.5s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: center;
+            color: #1a191d;
+            font-size: 1.5em;
+        }
+
+        .btn1:hover span {
+            left: calc(100% - 55px);
+        }
+
+        .btn1:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 100%;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateX(-170px) skewX(30deg);
+            transition: 0.75s ease-in-out;
+        }
+
+        .btn1:hover:after {
+            transform: translateX(170px) skewX(30deg);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static 'logo.jpg'%}" alt="logo">
+                </span>
+                <div class="text header-text">
+                    <span class="name">BitBuzz</span>
+                    <span class="profession">Web Player</span>
+                </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-right-short toggle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+            </svg>
+
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="search-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search icon" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                        <form action="{% url 'search' %}" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="search" id="" placeholder="Search">
+                        </form>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'homel' %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-house icon" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                            </svg>
+                            <span class="text nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'liked_songs' %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-heart icon text-danger" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+                    <li class="">
+                    
+                            <a data-toggle="modal" data-target="#exampleModalCenter5">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-music-note-list icon" viewBox="0 0 16 16">
+                                <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+                                <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
+                                <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
+                                <path fill-rule="evenodd"
+                                    d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+                            </svg>
+                            <span class="text nav-text">Library</span>
+                        </a>
+                        
+                    </li>
+                    <li class="">
+                        <!-- <a id="your_bb"> -->
+                            <a data-toggle="modal" data-target="#exampleModalCenter4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-broadcast icon" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+                            </svg>
+                            <span class="text nav-text">Hey Dimmy!</span>
+                        </a>
+                    </li>
+                    <!-- profile -->
+                    {% block profile %}
+
+                    {% endblock %}
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+
+
+                <!-- gates -->
+                {% block gates %}
+
+                {% endblock %}
+                <li class="mode">
+                    <div class="moon-sun">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-moon" viewBox="0 0 16 16">
+                            <path
+                                d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z" />
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-brightness-high sun" viewBox="0 0 16 16">
+                            <path
+                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+                        </svg>
+                    </div>
+                    <span class="mode-text text">Dark Mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <section class="home">
+        <div class="song_side" id="dummyhome">
+
+            <div class="video-background">
+                <video autoplay loop muted>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                {% block upperheader %}
+
+                {% endblock %}
+
+            </div>
+            <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        {% block player %}
+        {% endblock %}
+
+              
+<div class="modal" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Welcome to Bitbuzz</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p style="display:  inline-block; margin-top: 10px;" id="dimmymsg">Say 'Hey Dimmy'</p>
+            <button id="play2" >  
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic-fill" viewBox="0 0 16 16">
+                <path d="M5 3a3 3 0 0 1 6 0v5a3 3 0 0 1-6 0V3z"/>
+                <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
+              </svg>
+        
+        </button>
+        </div>
+        <div class="modal-footer box" id="modalfooter">
+            
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal" id="exampleModalCenter5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Welcome to Bitbuzz</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+        
+
+        <div class="py-2">
+           <p style="font-style: oblique;">Want to become a artists ?</p>
+            <a href="/accounts" class="btn1" id="startz" style="margin-left:0px ;">Login<span><svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                    </svg></span></a>
+          </div>
+           
+        </div>
+        <div class="modal-footer box" id="modalfooter">
+             
+        </div>
+    </div>
+</div>
+</div>
+
+    </section>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script>
+ 
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('.sidebar'),
+            toggle = body.querySelector('.toggle'),
+            searchBtn = body.querySelector('.search-box'),
+            modeSwitch = body.querySelector('.toggle-switch'),
+            modeText = body.querySelector('.mode-text');
+
+
+        toggle.addEventListener('click', () => {
+            sidebar.classList.toggle('close');
+
+        })
+        modeSwitch.addEventListener('click', () => {
+            body.classList.toggle('dark');
+
+            if (body.classList.contains('dark')) {
+                modeText.innerText = 'Light Mode'
+            }
+            else {
+                modeText.innerText = 'Dark Mode'
+            }
+        })
+    </script>
+
+    {% block javascript %}
+
+    {% endblock %}
+
+
+</body>
+
+</html>

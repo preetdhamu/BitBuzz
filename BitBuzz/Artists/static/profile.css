@@ -1,0 +1,31 @@
+.container1{
+    display: flex;
+    /* border: 2px solid red; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* background: #f2f619; */
+    background: #ffffff;
+    box-shadow: 1px 1px 8px rgb(255, 255, 255), -1px -1px 8px rgb(255, 255, 255);
+    border-radius: 20px;
+    
+}
+.minicontainer{
+    /* border: 4px solid green; */
+    /* background: #bb7541; */
+    /* width: 900px; */
+    /* margin-top: 10px; */
+    border-radius: 20px;
+    background: #ffffff;
+
+  }
+
+
+
+
+
+
+.profile-bottom{
+    padding: 60px;
+    
+}

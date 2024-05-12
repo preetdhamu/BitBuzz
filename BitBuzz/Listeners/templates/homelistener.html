@@ -1,0 +1,1016 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <title>BitBuzz-Web Player</title>
+
+    <link rel="stylesheet" href="{% static 'homelistener.css'%}">
+    <link rel="stylesheet" href="{% static 'models.css'%}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .home .song_side .popular_song .pop_song li:hover {
+            box-shadow: 2px 5px 2px #808080;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static 'logo.jpg'%}" alt="logo">
+                </span>
+
+
+                <div class="text header-text">
+                    <span class="name">BitBuzz</span>
+                    <span class="profession">Web Player</span>
+                </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-right-short toggle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+            </svg>
+
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <ul class="menu-links">
+                    <li class="search-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search icon" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                        <input type="search" name=" " id="" placeholder="Search">
+
+                    </li>
+                    <li class="">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-house icon" viewBox="0 0 16 16">
+                                <path
+                                    d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+                            </svg>
+                            <span class="text nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-heart icon" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+                            </svg>
+                            <span class="text nav-text">Likes</span>
+                        </a>
+                    </li>
+                    <li class="">
+                    
+                        <a data-toggle="modal" data-target="#exampleModalCenter5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-music-note-list icon" viewBox="0 0 16 16">
+                            <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z" />
+                            <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
+                            <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z" />
+                            <path fill-rule="evenodd"
+                                d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                        <span class="text nav-text">Library</span>
+                    </a>
+                    
+                </li>
+                    <li class="">
+                        <a id="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-broadcast icon" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+                            </svg>
+                            <span class="text nav-text">Hey Dimmy!</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+
+                <li class="">
+                    <a href="#" data-toggle="modal" data-target="#exampleModalCenter" id="loginlink">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-box-arrow-in-right icon" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                            <path fill-rule="evenodd"
+                                d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                        </svg>
+                        <span class="text nav-text">Login</span>
+                    </a>
+                </li>
+
+                <li class="mode">
+                    <div class="moon-sun">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-moon" viewBox="0 0 16 16">
+                            <path
+                                d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z" />
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-brightness-high sun" viewBox="0 0 16 16">
+                            <path
+                                d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+                        </svg>
+                    </div>
+                    <span class="mode-text text">Dark Mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <section class="home">
+        <div class="song_side" id="dummyhome">
+
+            <div class="video-background">
+                <video autoplay loop muted>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="content">
+                    <h1>BitBuzz-Web Player</h1>
+
+                    <p>You were the shadow to my light did you feel us Another start you fade <br> Away afraid our aim
+                        is
+                        out of sight Wanna see us Alive</p>
+                    <div class="buttons">
+                        <button>Play</button>
+                        <button>Follow</button>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="popular_song">
+                <div class="h4">
+                    <h4>Popular Song</h4>
+                    <p>{{songs}}</p>
+                    <div class="btn_s">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-left-short icon" id="pop_song_left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-right-short icon" id="pop_song_right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="pop_song ">
+
+                    {% for i in top_songs %}
+                    <li class="songItem ">
+                        <div class="img_play">
+                            <img src="{% static 'logo.jpg' %}" alt="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-play-fill playListPlay icon" id="{{i.id}}" viewBox="0 0 16 16">
+                                <path
+                                    d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+                            </svg>
+                        </div>
+                        <h5>ON my Way <br>
+                            <div class="subtitle">Alan Walker</div>
+                        </h5>
+
+                    </li>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+            <div class="popular_artists">
+                <div class="h4">
+                    <h4>Popular Artists</h4>
+                    <div class="btn_s">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-left-short icon" id="pop_art_left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-right-short icon" id="pop_art_right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="item">
+                    {% for i in artists %}
+                    <li>
+                        <img src="{{i.user_profile_image.url}}" alt="">
+                    </li>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- loginmodal -->
+
+    <div class="modal" id="exampleModalCenter5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Welcome to Bitbuzz</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+        
+
+        <div class="py-2">
+           <p style="font-style: oblique;">Want to become a artists ?</p>
+            <a href="/accounts" class="btn1" id="startz" style="margin-left:0px ;">Login<span><svg
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                    </svg></span></a>
+          </div>
+           
+        </div>
+        <div class="modal-footer box" id="modalfooter">
+             
+        </div>
+    </div>
+</div>
+</div>
+
+    <div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Log in</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- form  -->
+                    <!-- LOGIN FORM -->
+                    <h5 id="msg1"></h5>
+                    <!-- id="loginform" -->
+                    <form method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <div class="mb-3 box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-envelope icon" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                            </svg>
+                            <input type="email" class="form-control box1" id="exampleInputEmail" required
+                                aria-describedby="emailHelp" placeholder="Email Address" style="background:none;"
+                                name="exampleInputEmail">
+                        </div>
+                        <div id="emailHelp" class="form-text" style="opacity: 0.6;">We'll never share your email with
+                            anyone else.</div>
+                        <div class="mb-3 box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="16" fill="currentColor"
+                                class="bi bi-lock" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+                            </svg>
+                            <input type="password" class="form-control box1" required id="exampleInputPassword"
+                                placeholder="Password" style="background:none;" name="exampleInputPassword">
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark btn1">Log In</button>
+                        <div id="logininfo" class="form-text" style="margin-left:200px;"> Or</div>
+                        <!-- new form -->
+                        <button type="button" class="btn btn-outline-dark btn1" data-toggle="modal"
+                            data-target="#exampleModalCenter2" data-dismiss="modal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-telephone" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z">
+                                </path>
+                            </svg>
+                            Phone number
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-footer box" id="modalfooter">
+                    <div class="sign-up">
+                        Don't have an account?
+                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter1">
+                            <span class="text nav-text" data-dismiss="modal">Register</span>
+                        </a>
+                    </div>
+                    <button id="cancelModal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- registermodal -->
+
+    <div class="modal" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Register</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- form  -->
+                    <!-- REGISTER FORM -->
+                    <h5 id="msg1"></h5>
+                    <form method="post" id="registerationformemail">
+                        {% csrf_token %}
+                        <div class="mb-3 box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-envelope" viewBox="0 0 16 16">
+                                <path
+                                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+                            </svg>
+                            <input type="email" class="form-control box1" id="exampleInputEmail1" required
+                                aria-describedby="emailHelp" placeholder="Email Address" style="background:none;"
+                                name="exampleInputEmail1">
+                        </div>
+                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter2">
+                            <span class="text nav-text" data-dismiss="modal">Use phone number instead email</span>
+                        </a>
+                        <div class="mb-3 box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="16" fill="currentColor"
+                                class="bi bi-lock " viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z" />
+                            </svg>
+                            <input type="password" class="form-control box1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required id="exampleInputPassword1"
+                                placeholder="Password" style="background:none;" name="exampleInputPassword1">
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark btn1">Register Now</button>
+                    </form>
+                </div>
+                <div class="modal-footer box" id="modalfooter">
+                    <div class="sign-up">
+                        Already have an account?
+                        <a href="#" data-toggle="modal" data-target="#exampleModalCenter">
+                            <span class="text nav-text" data-dismiss="modal">Login</span>
+                        </a>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- phonemodal -->
+    <div class="modal" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Phone</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- form  -->
+                    <!-- REGISTER FORM -->
+                    <form method="post" id="phonenumberentry">
+                        {% csrf_token %}
+                        <h5 id="msg"></h5>
+                        <div class="mb-3 box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-telephone" viewBox="0 0 16 16">
+                                <path
+                                    d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                            </svg>
+                            <input type="text" class="form-control box1" id="phone_number" required pattern="[0-9]{10}" 
+                                aria-describedby="emailHelp" placeholder="Phone Number" style="background:none;"
+                                name="phone_number">
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark btn1" data-toggle="collapse"
+                            data-target="#collapseExample" aria-expanded="false"
+                            aria-controls="collapseExample">Next</button>
+                    </form>
+                    <script>
+                        function validatePhoneNumber() {
+                          const phoneNumber = document.getElementById('phone_number').value;
+                          const cleanNumber = phoneNumber.replace(/\D/g, '');
+                          const regex = /^[2-9]\d{2}[2-9]\d{2}\d{4}$/;
+                          const isValid = regex.test(cleanNumber);
+              
+                          if (isValid) {
+                            console.log('valid')
+                          } else {
+                            alert('Please enter a valid phone number!');
+                          }
+                        }
+                      </script>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body mb-3 box">
+                            <!-- id="verify_otp" -->
+                            <form  action="{% url 'verify_otp' %}" method="post">
+                                {% csrf_token %}
+                                <div class="mb-3 box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-chat-right-text" viewBox="0 0 16 16">
+                                        <path
+                                            d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z" />
+                                        <path
+                                            d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                                    </svg>
+                                    <input type="text" class="form-control box1" id="otp" required placeholder="OTP"
+                                        style="background:none;" name="otp">
+                                    <input type="text" class="form-control box1" id="phone_number_for_verify" required
+                                        placeholder="Phone Number" style="display: none;"
+                                        name="phone_number_for_verify">
+                                </div>
+                                <!-- id="confirmotp" data-toggle="modal" data-target="#exampleModalCenter3" -->
+                                <button type="submit" class="btn btn-outline-dark btn1">
+                                    <span class="text nav-text">Confirm OTP</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer box" id="modalfooter">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- basicmodal -->
+
+    <div class="modal" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Basic Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                   
+                    <form method="post" action="">
+                        {% csrf_token %}
+
+                        <div class="mb-3 box">
+                            <input type="text" class="form-control box1" id="user_email" aria-describedby="emailHelp"
+                                style="background:none;" name="user_email">
+                        </div>
+                        <div class="mb-3 box">
+                            <input type="text" class="form-control box1" id="user_phone_number"
+                                aria-describedby="emailHelp" style="background:none; display: none;"
+                                name="user_phone_number">
+                        </div>
+                        <div class="mb-3 box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-vcard" viewBox="0 0 16 16">
+                                <path
+                                    d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z" />
+                                <path
+                                    d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z" />
+                            </svg>
+                            <input type="text" class="form-control box1" id="user_name" required
+                                aria-describedby="emailHelp" placeholder="what should we call you ?"
+                                style="background:none;" name="user_name">
+                        </div>
+                        <div class="mb-3 box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-calendar3" viewBox="0 0 16 16">
+                                <path
+                                    d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
+                                <path
+                                    d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                            </svg>
+                            <input type="date" class="form-control box1" id="user_birthdate" name="user_birthdate"
+                                required min="1900-01-01" max="2023-12-31" placeholder="what is your Birth date ?">
+                        </div>
+
+                        <div class="mb-3 box">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                <path
+                                    d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z" />
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            </svg>
+                            <select id="gender" name="gender" class="form-control box1">
+                                <option value="M" selected>Male</option>
+                                <option value="F">Female</option>
+                                <option value="O">Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark btn1">Save Now</button>
+                    </form>
+                </div>
+                <div class="modal-footer box" id="modalfooter">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+
+        // $(document).ready(function() {
+        //             // Add event listener to window click event
+        //             $(window).click(function() {
+        //                 // Show the login modal
+        //                 $('#exampleModalCenter').modal('show');
+        //             });
+
+        //         });
+
+        document.getElementById('phone_number').addEventListener('input', function () {
+            document.getElementById('phone_number_for_verify').value = this.value;
+            document.getElementById('user_phone_number').value = this.value;
+        });
+
+        document.getElementById('exampleInputEmail').addEventListener('input', function () {
+            document.getElementById('user_email').value = this.value;
+        });
+
+
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('.sidebar'),
+            toggle = body.querySelector('.toggle'),
+            searchBtn = body.querySelector('.search-box'),
+            modeSwitch = body.querySelector('.toggle-switch'),
+            modeText = body.querySelector('.mode-text');
+
+
+        toggle.addEventListener('click', () => {
+            sidebar.classList.toggle('close');
+
+        })
+        modeSwitch.addEventListener('click', () => {
+            body.classList.toggle('dark');
+
+            if (body.classList.contains('dark')) {
+                modeText.innerText = 'Light Mode'
+            }
+            else {
+                modeText.innerText = 'Dark Mode'
+            }
+        })
+
+
+        $(document).ready(function () {
+            $('#phonenumberentry').on('submit', function (e) {
+                e.preventDefault();
+
+                var formData = new FormData();
+                formData.append('phone_number', $('#phone_number').val());
+                formData.append('csrfmiddlewaretoken', $('input[name=csrfmiddlewaretoken]').val());
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/send_otp',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $('#msg').html(data);
+                    }
+                    ,
+                    error: function (xhr, status, error) {
+                        console.error('AJAX Error: ' + status + error);
+                    }
+                });
+            });
+        });
+
+
+        $(document).ready(function () {
+            $('#verify_otp').on('submit', function (e) {
+                e.preventDefault();
+
+                var formData = new FormData();
+                formData.append('phone_number_for_verify', $('#phone_number_for_verify').val());
+                formData.append('otp', $('#otp').val());
+                formData.append('csrfmiddlewaretoken', $('input[name=csrfmiddlewaretoken]').val());
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/verify_otp',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $('#msg').html(data);
+                        if (data === 'Correct_OTP') {
+                            $('#exampleModalCenter2').modal('hide');
+                            $('#exampleModalCenter3').modal('show');
+
+                        } else {
+                            setTimeout(function () {
+                                window.location.href = '/';
+                            }, 500);
+                        }
+                    }
+
+                    ,
+                    error: function (xhr, status, error) {
+                        console.error('AJAX Error: ' + status + error);
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $('#registerationformemail').on('submit', function (e) {
+                e.preventDefault();
+
+                var formData = new FormData();
+                formData.append('exampleInputEmail1', $('#exampleInputEmail1').val());
+                formData.append('exampleInputPassword1', $('#exampleInputPassword1').val());
+                formData.append('csrfmiddlewaretoken', $('input[name=csrfmiddlewaretoken]').val());
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/register',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $('#msg1').html(data);
+                        console.log(data)
+                        if (data === 'Registration Successful') {
+                            $('#exampleModalCenter1').modal('hide');
+                            $('#exampleModalCenter').modal('show');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('AJAX Error: ' + status + error);
+                    }
+                });
+            });
+        });
+
+
+        $(document).ready(function () {
+            $('#loginform').on('submit', function (e) {
+                e.preventDefault();
+
+                var formData = new FormData();
+                formData.append('exampleInputEmail', $('#exampleInputEmail').val());
+                formData.append('exampleInputPassword', $('#exampleInputPassword').val());
+                formData.append('csrfmiddlewaretoken', $('input[name=csrfmiddlewaretoken]').val());
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/login',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $('#msg1').html(data);
+
+                        if (data === 'Login Successfully') {
+                            $('#exampleModalCenter').modal('hide');
+                            $('#exampleModalCenter3').modal('show');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('AJAX Error: ' + status + error);
+                    }
+                });
+            });
+        });
+
+
+        let pop_song_left = document.getElementById('pop_song_left')
+        let pop_song_right = document.getElementById('pop_song_right')
+        let pop_song = document.getElementsByClassName('pop_song')[0]
+
+        pop_song_right.addEventListener('click', function (e) {
+            pop_song.scrollLeft += 330;
+        })
+        pop_song_left.addEventListener('click', function (e) {
+            pop_song.scrollLeft -= 330;
+        })
+
+
+
+        let pop_art_left = document.getElementById('pop_art_left')
+        let pop_art_right = document.getElementById('pop_art_right')
+        let item = document.getElementsByClassName('item')[0]
+
+        pop_art_right.addEventListener('click', function (e) {
+            item.scrollLeft += 330;
+        })
+        pop_art_left.addEventListener('click', function (e) {
+            item.scrollLeft -= 330;
+        })
+
+        //    master player
+
+        const songs = JSON.parse('{{ songs_json|escapejs }}');
+
+        firstsong = songs[2].file
+        const music = new Audio(firstsong);
+
+        Array.from(document.getElementsByClassName('songItem')).forEach((e, i) => {
+            e.getElementsByTagName('img')[0].src = songs[i].cover;
+            e.getElementsByTagName('h5')[0].innerHTML = songs[i].songName;
+        })
+
+
+
+        let masterPlay = document.getElementById('masterPlay');
+        let wave = document.getElementById('wave');
+
+        masterPlay.addEventListener('click', () => {
+            if (music.paused || music.currentTime <= 0) {
+                music.play();
+                wave.classList.add('active1');
+                masterPlay.classList.remove('bi-play-fill')
+                masterPlay.classList.add('bi-pause-fill')
+            }
+            else {
+                music.pause();
+                wave.classList.remove('active1');
+                masterPlay.classList.add('bi-play-fill')
+                masterPlay.classList.remove('bi-pause-fill')
+            }
+
+        })
+
+        const makeAllBackground = () => {
+            Array.from(document.getElementsByClassName('songItem')).forEach((el) => {
+                el.style.background = 'rgb(105,105,105,.1)';
+            })
+        }
+
+        const makeAllplays = () => {
+            Array.from(document.getElementsByClassName('playListPlay')).forEach((el) => {
+                // el.classList.add('bi-play-fill')
+                // el.classList.remove('bi-pause-fill')
+            })
+        }
+        let poster_master_play = document.getElementById('poster_master_play')
+        let download_music = document.getElementById('download_music')
+        let title = document.getElementById('title')
+        let index = 0;
+        Array.from(document.getElementsByClassName('playListPlay')).forEach((e) => {
+            e.addEventListener('click', (el) => {
+                index = el.target.id;
+                console.log(index)
+                wave.classList.add('active1');
+                let songTitle = songs.filter((els) => {
+                    return els.id == index;
+                });
+
+                songTitle.forEach(elss => {
+                    let { songName } = elss;
+                    title.innerHTML = songName;
+
+                    let { cover } = elss;
+                    poster_master_play.src = cover;
+                    // download_music.setAttribute('download', songName)
+
+                    let { file } = elss;
+                    music.src = file;
+                    // download_music.href = music_src
+
+
+                })
+                music.play()
+
+                makeAllBackground();
+                Array.from(document.getElementsByClassName('songItem'))[index - 3].style.background = "rgb(105,105,105,0.5)"
+                Array.from(document.getElementsByClassName('songItem'))[index - 3].classList.add('ram')
+                makeAllplays();
+                el.target.classList.remove('bi-pause-fill')
+                el.target.classList.add('bi-play-fill')
+            })
+        })
+
+        let currentStart = document.getElementById('currentStart')
+        let currentEnd = document.getElementById('currentEnd')
+        let seek = document.getElementById('seek')
+        let bar2 = document.getElementById('bar2')
+        let dot = document.getElementsByClassName('dot')[0]
+
+
+        music.addEventListener('timeupdate', () => {
+            let music_curr = music.currentTime;
+            let music_dur = music.duration;
+            // console.log(music_curr); 
+            let min1 = Math.floor(music_dur / 60);
+            let sec1 = Math.floor(music_dur % 60);
+            if (sec1 < 10) {
+                sec1 = `0${sec1}`
+            }
+            currentEnd.innerText = `${min1}:${sec1}`
+
+            let min2 = Math.floor(music_curr / 60)
+            let sec2 = Math.floor(music_curr % 60)
+            if (sec2 < 10) {
+                sec2 = `0${sec2}`
+            }
+            currentStart.innerText = `${min2}:${sec2}`
+
+            let progressBar = parseFloat((music_curr / music_dur) * 100)
+            seek.value = progressBar
+            let seekbar = seek.value;
+            bar2.style.width = `${seekbar}%`;
+            dot.style.left = `${seekbar}%`;
+
+        })
+
+
+        seek.addEventListener('change', () => {
+            music.currentTime = seek.value * music.duration / 100;
+        })
+
+        let vol_icon = document.getElementById('vol_icon');
+        let vol = document.getElementById('vol');
+        let vol_bar = document.getElementsByClassName('vol_bar')[0];
+        let vol_dot = document.getElementById('vol_dot');
+
+        vol.addEventListener('change', () => {
+            if (vol.value == 0) {
+                vol_icon.classList.remove('bi-volume-up-fill')
+                vol_icon.classList.remove('bi-volume-down-fill')
+                vol_icon.classList.add('bi-volume-off-fill')
+            }
+            if (vol.value > 0) {
+                vol_icon.classList.remove('bi-volume-up-fill')
+                vol_icon.classList.add('bi-volume-down-fill')
+                vol_icon.classList.remove('bi-volume-off-fill')
+            }
+            if (vol.value > 50) {
+                vol_icon.classList.add('bi-volume-up-fill')
+                vol_icon.classList.remove('bi-volume-down-fill')
+                vol_icon.classList.remove('bi-volume-off-fill')
+            }
+            let vol_a = vol.value
+            vol_bar.style.width = `${vol_a}%`
+            vol_dot.style.left = `${vol_a}%`
+            music.volume = vol_a / 100
+        })
+
+
+        let back = document.getElementById('back')
+        let next = document.getElementById('next')
+        back.addEventListener('click', () => {
+            index -= 1
+
+            if (index < 1) {
+                index = Array.from(document.getElementsByClassName('songItem')).length;
+            }
+
+            wave.classList.add('active1');
+            let songTitle = songs.filter((els) => {
+                return els.id == index;
+            });
+
+            songTitle.forEach(elss => {
+                let { songName } = elss;
+                title.innerHTML = songName;
+
+                let { cover } = elss;
+                poster_master_play.src = cover;
+                // download_music.setAttribute('download', songName)
+
+                let { file } = elss;
+                music.src = file;
+                // download_music.href = music_src
+
+
+            })
+            music.play()
+
+            makeAllBackground();
+            Array.from(document.getElementsByClassName('songItem'))[index - 3].style.background = "rgb(105,105,105,0.5)"
+            Array.from(document.getElementsByClassName('songItem'))[index - 3].classList.add('ram')
+            makeAllplays();
+
+        })
+        next.addEventListener('click', () => {
+            index++
+
+            if (index > Array.from(document.getElementsByClassName('songItem')).length) {
+                index = 1
+            }
+            wave.classList.add('active1');
+            let songTitle = songs.filter((els) => {
+                return els.id == index;
+            });
+
+            songTitle.forEach(elss => {
+                let { songName } = elss;
+                title.innerHTML = songName;
+
+                let { cover } = elss;
+                poster_master_play.src = cover;
+                // download_music.setAttribute('download', songName)
+
+                let { file } = elss;
+                music.src = file;
+                // download_music.href = music_src
+
+
+            })
+            music.play()
+
+            makeAllBackground();
+            Array.from(document.getElementsByClassName('songItem'))[index - 3].style.background = "rgb(105,105,105,0.5)"
+            Array.from(document.getElementsByClassName('songItem'))[index - 3].classList.add('ram')
+            makeAllplays();
+        })
+
+        music.addEventListener('ended', () => {
+            index++;
+            wave.classList.add('active1');
+            let songTitle = songs.filter((els) => {
+                return els.id == index;
+            });
+
+            songTitle.forEach(elss => {
+                let { songName } = elss;
+                title.innerHTML = songName;
+
+                let { cover } = elss;
+                poster_master_play.src = cover;
+                // download_music.setAttribute('download', songName)
+
+                let { file } = elss;
+                music.src = file;
+                // download_music.href = music_src
+
+
+            })
+            music.play()
+
+            makeAllBackground();
+            Array.from(document.getElementsByClassName('songItem'))[index - 3].style.background = "rgb(105,105,105,0.5)"
+            Array.from(document.getElementsByClassName('songItem'))[index - 3].classList.add('ram')
+            makeAllplays();
+
+        })
+
+    </script>
+
+
+</body>
+
+</html>

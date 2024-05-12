@@ -1,0 +1,222 @@
+html,
+body {
+    /* background: rgb(20, 20, 20); */
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    /* height: 100%; */
+    /* overflow: hidden; */
+}
+
+.svg-wrapper {
+    /* position: relative; */
+    display: inline;
+    /* top: 20%; */
+    transform: translateY(-50%);
+    margin: auto;
+    /* width: 320px; */
+}
+
+.shape {
+    stroke-dasharray: 140 540;
+    stroke-dashoffset: -474;
+    stroke-width: 6px;
+    fill: transparent;
+    stroke: #f2f619;
+    /* border-bottom: 66px solid black; */
+    transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+}
+
+.text {
+    font-family: 'Roboto Condensed';
+    font-size: 22px;
+    line-height: 0px;
+    letter-spacing: 8px;
+    color: black;
+    top: -28px;
+    position: relative;
+}
+
+.svg-wrapper:hover .shape {
+    stroke-width: 2px;
+    stroke-dashoffset: 0;
+    stroke-dasharray: 760;
+}
+
+.block {
+    position: relative;
+    /* margin: 300px auto 0; */
+    /* width: 500px; */
+    /* height: 250px; */
+    background: linear-gradient(0deg, #000, #272727);
+}
+
+.block:before,
+.block:after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    background: linear-gradient(45deg, rgb(242, 246, 0.8), rgb(255, 255, 255), rgba(0, 0, 0, 0));
+    background-size: 200%;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    z-index: -1;
+    animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.block:after {
+    filter: blur(50px);
+}
+
+
+
+
+  .songs {
+    /* box-shadow: rgba(0,0,0,0.3) 0px 19px 38px,rgba(0,0,0,0.22) 0px 15px 12px; */
+    box-shadow: 1px 1px 8px rgb(255, 255, 255), -1px -1px 8px rgb(255, 255, 255);
+    /* box-shadow: blue 0px 19px 38px,red 0px 15px 12px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+
+  }
+
+  .thumbnail {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    /* background-image: url('1.jpg'); */
+    background-size: cover;
+    border: 2px solid grey;
+    border-radius: 50%;
+    box-shadow: 1px 1px 7px blue, -1px -1px 7px red;
+    /* animation: vibrating 1s infinite; */
+  }
+  .thumbnail:hover{
+    animation: oscillating 1s infinite, rotateBackground 20s linear infinite;
+  }
+
+  @keyframes rotateBackground {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes oscillating {
+    0% {
+      border-width: 2px;
+    }
+
+    50% {
+      border-width: 5px;
+    }
+
+    100% {
+      border-width: 2px;
+    }
+  }
+
+  .col {
+    margin: 50px;
+  }
+
+  .player {
+    background: linear-gradient(45deg, rgb(242, 246, 0.8), rgb(255, 255, 255), rgba(0, 0, 0, 0));
+    border-radius:20px;
+  }
+
+  audio {
+    /* position: absolute;
+    top: 270px;
+    left: 25px; */
+
+
+    margin: 10px;
+
+  }
+
+  audio::-webkit-media-controls-panel {
+    /* background-color: #f2f619; */
+    box-shadow: 2px 2px 2px green;
+    background: transparent;
+
+  }
+
+  audio::-webkit-media-controls-play-button,
+  audio::-webkit-media-controls-volume-slider {
+    color: #f1f1f1;
+  }
+
+  audio::-webkit-media-controls-enclosure {
+    /* background-color: green; */
+    background: transparent;
+    overflow: hidden;
+  }
+  audio::-webkit-media-controls-panel {
+    width: calc(100% + 36px);
+  }
+          
+
+  .stroke{
+    background: #f1f1f1;
+    height: 300%;
+    width: 0px;
+    border-radius: 50px;
+    animation: animate 1s linear infinite;
+  }
+  @keyframes animate{
+    50%{
+      height: 20%;
+      background:rgb(242, 246, 0.8);
+
+    }
+    100%{
+      height: 100%;
+    }
+  }
+  .stroke:nth-child(1){
+    animation-delay: 0s;
+  }
+  .stroke:nth-child(2){
+    animation-delay: 0.3s;
+  }
+  .stroke:nth-child(3){
+    animation-delay: 0.6s;
+  }
+  .stroke:nth-child(4){
+    animation-delay: 0.9s;
+  }
+  .stroke:nth-child(5){
+    animation-delay: 0.6s;
+  }
+  .stroke:nth-child(6){
+    animation-delay: 0.3s;
+  }
+  .stroke:nth-child(7){
+    animation-delay: 0s;
+  }
+
+
+
+

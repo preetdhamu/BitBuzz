@@ -1,0 +1,425 @@
+{%extends 'base1.html'%}
+{% load static %}
+
+{%block profile %}
+<li class="user">
+    <a href="#">
+        <span class="image">
+            <img src="{% static 'logo.jpg'%}" alt="logo">
+        </span>
+        <span class="text header-text">Profile</span>
+    </a>
+</li>
+{%endblock%}
+
+{% block gates %}
+<li class="">
+    <a href="{% url 'custom_logout' %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-box-arrow-left icon" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z" />
+            <path fill-rule="evenodd"
+                d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+        </svg>
+        <span class="text nav-text">Logout</span>
+    </a>
+</li>
+{% endblock %}
+
+{% block upperheader %}
+<div class="content">
+    <h1>{{main}}</h1>
+    <h1>Searched Result -> {{success}}</h1>
+    <p>The right song can make everything better, so turn up the heat this summer.</p>
+    
+    <p id="followermsg"></p>
+    <div class="buttons">
+        <button>Play</button>
+        <button>Follow</button>
+    </div>
+
+
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="popular_song">
+    <div class="row ">
+        <div class="container-fluid col-5" style="width: 100%; height: 100%;">
+            <div class="artists_card " >
+                {% for i in artists %}
+                <div class="img-area">
+
+                    <img  src="{{i.user_profile_image.url}}" alt="" style="width: 105px; height: 105px; border: 1px solid #fff; border-radius: 50%; position: relative; top: 18%; left: 17%; ">
+                </div>
+                
+
+                <div class="name" >{{i.name}}</div>
+                <div class="about">{{i.bio}}</div>
+                <div class="social-icons">
+                    
+                    <a href="{{i.instaid}}" class="insta"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                        </svg></a>
+                    <a href="{{i.ytname}}" class="yt"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
+                            <path
+                                d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                            </svg></a>
+                        </div>
+                        <div class="buttons">
+                            
+                            <form id="follow{{i.email}}" method="post" action="/follow/{{i.email}}" style="display: inline-block;">
+                                {% csrf_token %}
+                                <label for="follow1{{i.email}}" id="follower{{i.email}}" onclick="change_color(this)">
+            
+                                    <button id="button1">Follow</button>
+            
+                                </label>
+                                <input type="text" id="singer_id{{i.email}}" name="singer_id{{i.email}}" value="{{ i.email }}"
+                                    style="display: none;" >
+                                    <input type="submit" id="follow1{{i.email}}" style="display: none;">
+                                </form>
+                                
+                            </div>
+                            {% endfor %}
+
+            </div>
+        </div>
+        
+        <div class="container-fluid col-7">
+            <table class="table mb-5" style="width: 50%; border: none;">
+                <thead id="header1">
+                    <tr>
+                        <th scope="col" style="padding-left:20px;">#</th>
+                        <th scope="col">Cover</th>
+                        <th scope="col">Songname</th>
+                    </tr>
+                </thead>
+                <tbody style="background: none;">
+                    {% for i in songs %}
+                    <tr class="songItem">
+                        <th scope="row"> <span class="songno"> {{forloop.counter}}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-play-fill playListPlay icon" id="{{i.id}}" viewBox="0 0 16 16">
+                                <path
+                                    d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+                            </svg>
+                        </th>
+                        <td>
+                            <div class="img_play">
+                                <img src="{% static 'logo.jpg' %}" alt="">
+                            </div> 
+                        </td>
+                        <td>
+                            <h5 id="title">Vande Matrm
+                                <div class="subtitle">Bankim Chandra sgfgw wewrwe </div>
+                            </h5>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- <div class="popular_artists">
+    <div class="h4">
+        <h4>Popular Artists</h4>
+        <div class="btn_s">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-left-short icon" id="pop_art_left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-arrow-right-short icon" id="pop_art_right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z" />
+            </svg>
+        </div>
+    </div>
+    <div class="item">
+        {% for i in artists %}
+        <li>
+            <img src="{{i.user_profile_image.url}}" alt="">
+        </li>
+        {% endfor %}
+        
+    </div>
+</div> -->
+{% endblock %}
+
+{% block player %}
+<div class="player">
+    <div class="master_player">
+        <div class="wave" id="wave">
+            <div class="wave1"></div>
+            <div class="wave1"></div>
+            <div class="wave1"></div>
+        </div>
+        <img src="{% static 'logo.jpg' %}" alt="" id="poster_master_play">
+        <h5 id="title1">Vande Matrm
+            <div class="subtitle1">Bankim Chandra sgfgw wewrwe </div>
+        </h5>
+        <div class="icons">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-music-note-beamed icon shuffle" viewBox="0 0 16 16">
+                Next
+                <path
+                    d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13c0-1.104 1.12-2 2.5-2s2.5.896 2.5 2zm9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2z" />
+                <path fill-rule="evenodd" d="M14 11V2h1v9h-1zM6 3v10H5V3h1z" />
+                <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4V2.905z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-skip-start-fill icon" id="back" viewBox="0 0 16 16">
+                <path
+                    d="M4 4a.5.5 0 0 1 1 0v3.248l6.267-3.636c.54-.313 1.232.066 1.232.696v7.384c0 .63-.692 1.01-1.232.697L5 8.753V12a.5.5 0 0 1-1 0V4z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-play-fill icon" id="masterPlay" viewBox="0 0 16 16">
+                <path
+                    d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-skip-end-fill icon" id="next" viewBox="0 0 16 16">
+                <path
+                    d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.693 3.3 4 3.678 4 4.308v7.384c0 .63.692 1.01 1.233.697L11.5 8.753V12a.5.5 0 0 0 1 0V4z" />
+            </svg>
+            <a href="" download id="download_music">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-cloud-arrow-down-fill icon" viewBox="0 0 16 16">
+                    <path
+                        d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z" />
+                </svg>
+            </a>
+        </div>
+        <span id="currentStart">0:00</span>
+        <div class="bar">
+            <input type="range" id="seek" min="0" max="100">
+            <div class="bar2" id="bar2"></div>
+            <div class="dot"></div>
+        </div>
+        <span id="currentEnd">0:30</span>
+        <div class="vol">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-volume-down-fill icon " id="vol_icon" viewBox="0 0 16 16">
+                <path
+                    d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12V4zm3.025 4a4.486 4.486 0 0 1-1.318 3.182L10 10.475A3.489 3.489 0 0 0 11.025 8 3.49 3.49 0 0 0 10 5.525l.707-.707A4.486 4.486 0 0 1 12.025 8z" />
+            </svg>
+            <input type="range" name="" id="vol" min="0" max="100">
+            <div class="vol_bar"></div>
+            <div class="dot" id="vol_dot"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+
+$(document).ready(function () {
+        $('form[id^="follow"]').on('submit', function (event) {
+            event.preventDefault();
+
+            var form = $(this);
+            var formData = form.serializeArray();
+
+            var jsonData = {};
+            $(formData).each(function (index, obj) {
+                jsonData[obj.name] = obj.value;
+
+            });
+
+            $.ajax({
+                type: form.attr('method'),
+                url: form.attr('action'),
+                data: JSON.stringify(jsonData),
+                dataType: 'json',
+                contentType: 'application/json',
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('X-CSRFToken', '{{ csrf_token }}');
+                },
+                success: function (response) {
+                    try {
+                        console.log(response)
+                        $('#followermsg').html(response.message);
+                    } catch (error) {
+                        console.error('Error occurred while handling the AJAX response:', error);
+                    }
+                    // alert(response)
+                    // $('#followermsg').html(response);
+                }
+                ,
+                error: function (xhr, errmsg, err) {
+                    // Handle any errors that occur during the AJAX request
+                    console.log(xhr.status + ": " + xhr.responseText);
+                }
+            });
+        });
+    });
+
+
+
+    const songs = JSON.parse('{{ songs_json|escapejs }}');
+    console.log(songs)
+    firstsong = "{% static '1.mp3'%}"
+    const music = new Audio(firstsong);
+
+    Array.from(document.getElementsByClassName('songItem')).forEach((e, i) => {
+        e.getElementsByTagName('img')[0].src = songs[i].cover;
+        e.getElementsByTagName('h5')[0].innerHTML = songs[i].songName;
+    })
+
+
+
+    let masterPlay = document.getElementById('masterPlay');
+    let pathElement = masterPlay.querySelector('path');
+    let wave = document.getElementById('wave');
+
+    masterPlay.addEventListener('click', () => {
+        if (music.paused || music.currentTime <= 0) {
+            music.play();
+            wave.classList.add('active1');
+            pathElement.setAttribute('d', 'M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z');
+        }
+        else {
+            music.pause();
+            wave.classList.remove('active1');
+            masterPlay.classList.add('bi-play-fill')
+            masterPlay.classList.remove('bi-pause-fill')
+            pathElement.setAttribute('d', 'm11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z')
+            makeAllplays1();
+        }
+
+    })
+
+    const makeAllBackground = () => {
+        Array.from(document.getElementsByClassName('songItem')).forEach((el) => {
+            el.style.background = 'rgb(105,105,105,.1)';
+            el.classList.remove('ram');
+        })
+    }
+
+    const makeAllplays = () => {
+        Array.from(document.getElementsByClassName('playListPlay')).forEach((el) => {
+            let pathElement1 = el.querySelector('path');
+            pathElement.setAttribute('d', 'M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z');
+        })
+    }
+    const makeAllplays1 = () => {
+        Array.from(document.getElementsByClassName('playListPlay')).forEach((el) => {
+            let pathElement1 = el.querySelector('path');
+            pathElement1.setAttribute('d', 'm11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z')            
+        })
+    }
+    let poster_master_play = document.getElementById('poster_master_play')
+    let download_music = document.getElementById('download_music')
+    let title = document.getElementById('title1')
+    let index = 0;
+    Array.from(document.getElementsByClassName('playListPlay')).forEach((e) => {
+        e.addEventListener('click', (el) => {
+            index = el.target.id;
+            console.log(index)
+            wave.classList.add('active1');
+            let songTitle = songs.filter((els) => {
+                return els.id == index;
+            });
+
+            songTitle.forEach(elss => {
+                let { songName } = elss;
+                title.innerHTML = songName;
+
+                let { cover } = elss;
+                poster_master_play.src = cover;
+                
+                // download_music.setAttribute('download', songName)
+                
+
+                let { file } = elss;
+                music.src = file;
+
+                // download_music.href = music_src
+
+            })
+            music.play()
+            makeAllBackground();
+            Array.from(document.getElementsByClassName('songItem'))[index - 3].style.background = "rgba(105,105,105,0.5)"
+            
+            Array.from(document.getElementsByClassName('playListPlay'))[index-3].querySelector('path').setAttribute('d', 'M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z');
+
+            makeAllplays();
+            
+        })
+    })
+
+    let currentStart = document.getElementById('currentStart')
+    let currentEnd = document.getElementById('currentEnd')
+    let seek = document.getElementById('seek')
+    let bar2 = document.getElementById('bar2')
+    let dot = document.getElementsByClassName('dot')[0]
+
+
+    music.addEventListener('timeupdate', () => {
+        let music_curr = music.currentTime;
+        let music_dur = music.duration;
+        // console.log(music_curr); 
+        let min1 = Math.floor(music_dur / 60);
+        let sec1 = Math.floor(music_dur % 60);
+        if (sec1 < 10) {
+            sec1 = `0${sec1}`
+        }
+        currentEnd.innerText = `${min1}:${sec1}`
+
+        let min2 = Math.floor(music_curr / 60)
+        let sec2 = Math.floor(music_curr % 60)
+        if (sec2 < 10) {
+            sec2 = `0${sec2}`
+        }
+        currentStart.innerText = `${min2}:${sec2}`
+
+        let progressBar = parseFloat((music_curr / music_dur) * 100)
+        seek.value = progressBar
+        let seekbar = seek.value;
+        bar2.style.width = `${seekbar}%`;
+        dot.style.left = `${seekbar}%`;
+
+    })
+
+
+    seek.addEventListener('change', () => {
+        music.currentTime = seek.value * music.duration / 100;
+    })
+
+    let vol_icon = document.getElementById('vol_icon');
+    let vol = document.getElementById('vol');
+    let vol_bar = document.getElementsByClassName('vol_bar')[0];
+    let vol_dot = document.getElementById('vol_dot');
+
+    vol.addEventListener('change', () => {
+        if (vol.value == 0) {
+            vol_icon.classList.remove('bi-volume-up-fill')
+            vol_icon.classList.remove('bi-volume-down-fill')
+            vol_icon.classList.add('bi-volume-off-fill')
+        }
+        if (vol.value > 0) {
+            vol_icon.classList.remove('bi-volume-up-fill')
+            vol_icon.classList.add('bi-volume-down-fill')
+            vol_icon.classList.remove('bi-volume-off-fill')
+        }
+        if (vol.value > 50) {
+            vol_icon.classList.add('bi-volume-up-fill')
+            vol_icon.classList.remove('bi-volume-down-fill')
+            vol_icon.classList.remove('bi-volume-off-fill')
+        }
+        let vol_a = vol.value
+        vol_bar.style.width = `${vol_a}%`
+        vol_dot.style.left = `${vol_a}%`
+        music.volume = vol_a / 100
+    })
+
+</script>
+{% endblock %}
