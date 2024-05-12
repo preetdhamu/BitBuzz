@@ -2,7 +2,7 @@
 Implemented phone and Gmail authentication using Django’s authentication system and third-party libraries for user access. Trained a machine learning model to recognize voice commands. BitBuzz provides users with a seamless and feature-rich music listening experience. The incorporation of AI for voice command recognition adds a futuristic and convenient dimension to BitBuzz. 
 ## ACCOUNTS
 ### Listener Registration Sccuess- >
-### ![listen_registeration_success](https://github.com/preetdhamu/BitBuzz/assets/108987388/a5eeaa86-eae7-4700-a444-4bb334e4a55f)
+![listen_registeration_success](https://github.com/preetdhamu/BitBuzz/assets/108987388/a5eeaa86-eae7-4700-a444-4bb334e4a55f)
 ### OTP Verification 
 ![otp_verify](https://github.com/preetdhamu/BitBuzz/assets/108987388/cedec34a-9ca1-4a47-92f6-23f6a41b796c)
 ### Artists Login 
@@ -36,5 +36,30 @@ Implemented phone and Gmail authentication using Django’s authentication syste
 ![artists_song_modify](https://github.com/preetdhamu/BitBuzz/assets/108987388/820ec422-d4a8-4639-b23b-8ef7837ec827)
 ### Astists Song Deletion
 ![artist_song_del](https://github.com/preetdhamu/BitBuzz/assets/108987388/237ec3fa-b793-4729-a8f0-127e1ff946e2)
+## Listener
+### Listener Home Light
+![listen_home_main](https://github.com/preetdhamu/BitBuzz/assets/108987388/6c8f6ace-06da-4d06-aa9b-99a4cb82da6c)
+### Listener Home Dark
+![listen_home_dark_music](https://github.com/preetdhamu/BitBuzz/assets/108987388/e5bdb99d-2c3e-4853-abe8-383d3b5c592d)
+
+### Listeners want to become artists and create their own library
+![listen_library_maker](https://github.com/preetdhamu/BitBuzz/assets/108987388/432f7d30-ca00-47db-b60a-66929126652a)
+### Listener Profile 
+![listen_profile](https://github.com/preetdhamu/BitBuzz/assets/108987388/02720f59-c04d-4e7f-b161-2b597134d5f3)
+### Listener Favourite Songs Section
+![listen_search_change](https://github.com/preetdhamu/BitBuzz/assets/108987388/5a64a7a0-736f-4445-b8c3-9a1d44ae930d)
+### Listener Search For Song 
+![listen_search_input](https://github.com/preetdhamu/BitBuzz/assets/108987388/03818466-475f-475b-bd1b-65e210665a89)
+### Result of Searchings Songs
+![listen_search_output](https://github.com/preetdhamu/BitBuzz/assets/108987388/68e4c977-6f52-4794-9267-fc4f7a44c85a)
+### Using "Hey Dimmy Section"
+![Hey_dimmy](https://github.com/preetdhamu/BitBuzz/assets/108987388/501a4e58-93b6-45be-b9b0-859366c26562)
+### Like Section
+![like_music](https://github.com/preetdhamu/BitBuzz/assets/108987388/c9480a0b-4bd5-43fc-935f-8f78e587628c)
+### Adding Song to Liked Section of a Listener 
+![listen_add_fav_music](https://github.com/preetdhamu/BitBuzz/assets/108987388/4b9a4323-250d-4fbe-ac20-ff399b9ef7d3)
+### Favourite Songs 
+![listen_favourite](https://github.com/preetdhamu/BitBuzz/assets/108987388/d7dc85f6-12c8-4332-8f51-3f8051bd3623)
+
 
 
