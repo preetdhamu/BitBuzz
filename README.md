@@ -15,6 +15,9 @@ Implemented phone and Gmail authentication using Django’s authentication syste
 ![attempt_to_login](https://github.com/preetdhamu/BitBuzz/assets/108987388/9e1b9f47-e29d-44a1-bca4-24953a3f07d2)
 ## Listener Login Details 
 ![listen_login_detail](https://github.com/preetdhamu/BitBuzz/assets/108987388/f7b81c9a-17b8-4173-882d-d5081b84819d)
+# Listener Login Page
 ![listen_login_page](https://github.com/preetdhamu/BitBuzz/assets/108987388/cdce5dac-714d-486a-b16c-e90a616c9ce8)
+# Listener Login By Phone Number
 ![listen_login_phone](https://github.com/preetdhamu/BitBuzz/assets/108987388/3215b82c-299a-46dc-9f20-461899715932)
+# Listener Registeration
 ![listen_register](https://github.com/preetdhamu/BitBuzz/assets/108987388/f71f077b-3c6a-4a85-bbe0-c2e8628c284c)
