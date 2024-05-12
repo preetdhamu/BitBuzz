@@ -2,7 +2,7 @@
 Implemented phone and Gmail authentication using Django’s authentication system and third-party libraries for user access. Trained a machine learning model to recognize voice commands. BitBuzz provides users with a seamless and feature-rich music listening experience. The incorporation of AI for voice command recognition adds a futuristic and convenient dimension to BitBuzz. 
 ## ACCOUNTS
 ### Listener Registration Sccuess- >
-![listen_registeration_success](https://github.com/preetdhamu/BitBuzz/assets/108987388/a5eeaa86-eae7-4700-a444-4bb334e4a55f)
+### ![listen_registeration_success](https://github.com/preetdhamu/BitBuzz/assets/108987388/a5eeaa86-eae7-4700-a444-4bb334e4a55f)
 ### OTP Verification 
 ![otp_verify](https://github.com/preetdhamu/BitBuzz/assets/108987388/cedec34a-9ca1-4a47-92f6-23f6a41b796c)
 ### Artists Login 
@@ -35,6 +35,6 @@ Implemented phone and Gmail authentication using Django’s authentication syste
 ### Artists Song Modification
 ![artists_song_modify](https://github.com/preetdhamu/BitBuzz/assets/108987388/820ec422-d4a8-4639-b23b-8ef7837ec827)
 ### Astists Song Deletion
-### ![artist_song_del](https://github.com/preetdhamu/BitBuzz/assets/108987388/237ec3fa-b793-4729-a8f0-127e1ff946e2)
+![artist_song_del](https://github.com/preetdhamu/BitBuzz/assets/108987388/237ec3fa-b793-4729-a8f0-127e1ff946e2)
 
 
